@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import contactsOperations from '../../redux/contacts/contacts-operations';
 import ContactListItem from '../ContactListItem';
 import './ContactList.scss';
+import contactsSelectors from '../../redux/contacts/contacts-selectors';
+import contactsOperations from '../../redux/contacts/contacts-operations';
 
 const ContactList = ({ contacts, onClick }) => (
   <ul className="contact-list">
@@ -17,16 +18,8 @@ const ContactList = ({ contacts, onClick }) => (
   </ul>
 );
 
-const getFilteredContacts = (allContacts, filter) => {
-  const lowercasedFilter = filter.toLowerCase();
-
-  return allContacts.filter(({ name }) =>
-    name.toLowerCase().includes(lowercasedFilter),
-  );
-};
-
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
-  contacts: getFilteredContacts(items, filter),
+const mapStateToProps = state => ({
+  contacts: contactsSelectors.getFilteredContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
