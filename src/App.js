@@ -1,21 +1,41 @@
+import { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Container from './components/Container';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
 import './App.scss';
+import contactsOperations from './redux/contacts/contacts-operations';
 
-const App = () => (
-  <Container>
-    <h1 className="app-title">Phonebook</h1>
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchContacts();
+  }
 
-    <ContactForm />
+  render() {
+    return (
+      <Container>
+        <h1 className="app-title">Phonebook</h1>
 
-    <h2 className="section-title">Contacts</h2>
+        <ContactForm />
 
-    <Filter />
+        <h2 className="section-title">Contacts</h2>
 
-    <ContactList />
-  </Container>
-);
+        <Filter />
 
-export default App;
+        <ContactList />
+      </Container>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
+});
+
+App.propTypes = {
+  fetchContacts: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(App);

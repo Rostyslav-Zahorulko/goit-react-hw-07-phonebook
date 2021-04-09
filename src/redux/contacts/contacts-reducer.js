@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import contactsActions from './contacts-actions';
 
 const itemsReducer = createReducer([], {
+  [contactsActions.fetchContactsSuccess]: (_, { payload }) => payload,
   [contactsActions.addContactSuccess]: (state, { payload }) => [
     ...state,
     payload,
@@ -16,6 +17,9 @@ const filterReducer = createReducer('', {
 });
 
 const loadingReducer = createReducer(false, {
+  [contactsActions.fetchContactRequest]: () => true,
+  [contactsActions.fetchContactSuccess]: () => false,
+  [contactsActions.fetchContactError]: () => false,
   [contactsActions.addContactRequest]: () => true,
   [contactsActions.addContactSuccess]: () => false,
   [contactsActions.addContactError]: () => false,
