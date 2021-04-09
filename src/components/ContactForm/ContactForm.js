@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import contactsActions from '../../redux/contacts/contacts-actions';
+import contactsOperations from '../../redux/contacts/contacts-operations';
 import './ContactForm.scss';
 
 class ContactForm extends Component {
@@ -15,7 +15,7 @@ class ContactForm extends Component {
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         number: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
       }),
     ).isRequired,
     onSubmit: PropTypes.func.isRequired,
@@ -91,7 +91,7 @@ const mapStateToProps = ({ contacts }) => ({
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (name, number) =>
-    dispatch(contactsActions.addContact(name, number)),
+    dispatch(contactsOperations.addContact(name, number)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
