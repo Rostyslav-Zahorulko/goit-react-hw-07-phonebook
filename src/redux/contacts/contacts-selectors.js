@@ -4,6 +4,8 @@ const getContacts = state => state.contacts.items;
 
 const getFilter = state => state.contacts.filter;
 
+const getLoading = state => state.contacts.loading;
+
 const getLowercasedFilter = state => {
   const filter = getFilter(state);
 
@@ -21,6 +23,7 @@ const getFilteredContacts = createSelector(
 const contactsSelectors = {
   getContacts,
   getFilter,
+  getLoading,
   getFilteredContacts,
 };
 

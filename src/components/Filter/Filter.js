@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './Filter.scss';
 import contactsSelectors from '../../redux/contacts/contacts-selectors';
 import contactsActions from '../../redux/contacts/contacts-actions';
-
-import './Filter.scss';
 
 const Filter = ({ filter, onChange }) => (
   <label className="filter">

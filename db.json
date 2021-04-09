@@ -2,22 +2,27 @@
   "contacts": [
     {
       "name": "Ros",
-      "number": "111-11-11",
+      "number": "222-44-11",
       "id": 1
     },
     {
+      "name": "Gerion",
+      "number": "555-55-55",
+      "id": 2
+    },
+    {
       "name": "Ajax",
-      "number": "222-44-11",
+      "number": "121-33-11",
       "id": 3
     },
     {
-      "name": "ros",
-      "number": "121-33-11",
+      "name": "Poly",
+      "number": "222-44-11",
       "id": 4
     },
     {
-      "name": "oSk",
-      "number": "121-33-11",
+      "name": "Peter",
+      "number": "322-12-56",
       "id": 5
     }
   ]
