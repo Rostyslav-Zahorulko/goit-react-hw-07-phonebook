@@ -7,7 +7,7 @@ const itemsReducer = createReducer([], {
     ...state,
     payload,
   ],
-  [contactsActions.deleteContact]: (state, { payload }) =>
+  [contactsActions.deleteContactSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
@@ -19,6 +19,9 @@ const loadingReducer = createReducer(false, {
   [contactsActions.addContactRequest]: () => true,
   [contactsActions.addContactSuccess]: () => false,
   [contactsActions.addContactError]: () => false,
+  [contactsActions.deleteContactRequest]: () => true,
+  [contactsActions.deleteContactSuccess]: () => false,
+  [contactsActions.deleteContactError]: () => false,
 });
 
 export default combineReducers({

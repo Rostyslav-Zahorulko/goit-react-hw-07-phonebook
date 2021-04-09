@@ -14,8 +14,20 @@ const addContact = (name, number) => dispatch => {
     .catch(error => dispatch(contactsActions.addContactError(error)));
 };
 
+const deleteContact = id => dispatch => {
+  dispatch(contactsActions.deleteContactRequest());
+
+  axios
+    .delete(`/contacts/${id}`)
+    .then(() => {
+      dispatch(contactsActions.deleteContactSuccess(id));
+    })
+    .catch(error => dispatch(contactsActions.deleteContactError(error)));
+};
+
 const contactsOperations = {
   addContact,
+  deleteContact,
 };
 
 export default contactsOperations;
