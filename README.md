@@ -1,1 +1,1 @@
-React application template
+ДЗ із React N 7
