@@ -1,35 +1,47 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import contactsActions from './contacts-actions';
+import { contactsActions } from '../contacts';
+
+const {
+  fetchContactsRequest,
+  fetchContactsSuccess,
+  fetchContactsError,
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  deleteContactRequest,
+  deleteContactSuccess,
+  deleteContactError,
+  filterContactsByName,
+} = contactsActions;
 
 const itemsReducer = createReducer([], {
-  [contactsActions.fetchContactsSuccess]: (_, { payload }) => payload,
-  [contactsActions.addContactSuccess]: (state, { payload }) => [
-    ...state,
-    payload,
-  ],
-  [contactsActions.deleteContactSuccess]: (state, { payload }) =>
+  [fetchContactsSuccess]: (_, { payload }) => payload,
+  [addContactSuccess]: (state, { payload }) => [...state, payload],
+  [deleteContactSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
 const filterReducer = createReducer('', {
-  [contactsActions.filterContactsByName]: (_, { payload }) => payload,
+  [filterContactsByName]: (_, { payload }) => payload,
 });
 
 const loadingReducer = createReducer(false, {
-  [contactsActions.fetchContactRequest]: () => true,
-  [contactsActions.fetchContactSuccess]: () => false,
-  [contactsActions.fetchContactError]: () => false,
-  [contactsActions.addContactRequest]: () => true,
-  [contactsActions.addContactSuccess]: () => false,
-  [contactsActions.addContactError]: () => false,
-  [contactsActions.deleteContactRequest]: () => true,
-  [contactsActions.deleteContactSuccess]: () => false,
-  [contactsActions.deleteContactError]: () => false,
+  [fetchContactsRequest]: () => true,
+  [fetchContactsSuccess]: () => false,
+  [fetchContactsError]: () => false,
+  [addContactRequest]: () => true,
+  [addContactSuccess]: () => false,
+  [addContactError]: () => false,
+  [deleteContactRequest]: () => true,
+  [deleteContactSuccess]: () => false,
+  [deleteContactError]: () => false,
 });
 
-export default combineReducers({
+const contactsReducer = combineReducers({
   items: itemsReducer,
   filter: filterReducer,
   loading: loadingReducer,
 });
+
+export default contactsReducer;

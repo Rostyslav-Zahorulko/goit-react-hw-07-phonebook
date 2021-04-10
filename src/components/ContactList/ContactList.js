@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem';
 import './ContactList.scss';
-import contactsSelectors from '../../redux/contacts/contacts-selectors';
-import contactsOperations from '../../redux/contacts/contacts-operations';
+import { contactsSelectors, contactsOperations } from '../../redux/contacts';
 
 const ContactList = ({ contacts, onClick }) => (
   <ul className="contact-list">

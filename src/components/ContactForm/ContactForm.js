@@ -2,8 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './ContactForm.scss';
-import contactsSelectors from '../../redux/contacts/contacts-selectors';
-import contactsOperations from '../../redux/contacts/contacts-operations';
+import { contactsSelectors, contactsOperations } from '../../redux/contacts';
 
 class ContactForm extends Component {
   state = {

@@ -7,8 +7,7 @@ import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
 import './App.scss';
-import contactsSelectors from './redux/contacts/contacts-selectors';
-import contactsOperations from './redux/contacts/contacts-operations';
+import { contactsSelectors, contactsOperations } from './redux/contacts';
 
 class App extends Component {
   static propTypes = {
