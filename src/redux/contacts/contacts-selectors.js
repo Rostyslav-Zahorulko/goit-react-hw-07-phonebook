@@ -6,6 +6,8 @@ const getFilter = state => state.contacts.filter;
 
 const getLoading = state => state.contacts.loading;
 
+const getError = state => state.contacts.error;
+
 const getLowercasedFilter = state => {
   const filter = getFilter(state);
 
@@ -24,6 +26,7 @@ const contactsSelectors = {
   getContacts,
   getFilter,
   getLoading,
+  getError,
   getFilteredContacts,
 };
 

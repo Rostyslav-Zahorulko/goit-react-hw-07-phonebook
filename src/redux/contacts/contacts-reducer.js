@@ -38,10 +38,17 @@ const loadingReducer = createReducer(false, {
   [deleteContactError]: () => false,
 });
 
+const errorReducer = createReducer('', {
+  [fetchContactsError]: (_, { payload }) => payload,
+  [addContactError]: (_, { payload }) => payload,
+  [deleteContactError]: (_, { payload }) => payload,
+});
+
 const contactsReducer = combineReducers({
   items: itemsReducer,
   filter: filterReducer,
   loading: loadingReducer,
+  error: errorReducer,
 });
 
 export default contactsReducer;
